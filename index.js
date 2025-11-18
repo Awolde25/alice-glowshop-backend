@@ -89,6 +89,12 @@ app.get("/products", async (req, res) => {
     return res.json(fallbackProducts);
   }
 });
+app.use(cors());
+app.use(express.json());
+
+// Routes
+const productRoutes = require("./routes/products");
+app.use("/products", productRoutes);
 
 app.get("/", (req, res) => {
   res.send("Backend is running");
